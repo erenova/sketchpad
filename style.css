@@ -1,0 +1,27 @@
+/*? Technical Styling Area  */
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+/*! Header Styling Area */
+
+.header {
+  border: 1px solid black;
+}
+
+.content {
+  border: 1px solid blue;
+}
+
+.footer {
+  border: 1px solid red;
+}
