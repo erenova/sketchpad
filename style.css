@@ -73,10 +73,8 @@ h2 {
 }
 
 .menu-button {
-  position: absolute;
-  top: 22%;
-  left: 37%;
-  transform: translate(-50%, -111%);
+  position: relative;
+  top: 70px;
   height: 30px;
   width: 30px;
   font-size: 2rem;
@@ -99,13 +97,11 @@ h2 {
 }
 
 .menu-desktop {
+  margin-left: 50px;
+  position: relative;
   border: black 1px solid;
   padding: 10px;
   border-radius: 20px 20px 0 0;
-  top: 27%;
-  left: 51%;
-  transform: translate(-50%, -52%);
-  position: absolute;
   width: 400px;
   height: 50px;
   transition: 300ms all cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -113,18 +109,27 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  transform: translateY(90%);
 }
 .menu-desktop.active {
+  transition: 300ms all ease;
   border: none;
   -webkit-box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
   -moz-box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
   box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
   opacity: 1;
-  transform: translate(-50.5%, -150%);
+  transform: translateY(20%);
 }
 
 .menu-desktop > button {
   height: 30px;
+}
+.menu-grid-selector {
+  opacity: 1;
+  transition: 100ms all ease;
+}
+.menu-grid-selector.active {
+  opacity: 0;
 }
 
 .fa-fade {
@@ -151,16 +156,60 @@ h2 {
 }
 
 .grid-item {
+  z-index: 2;
   flex-basis: calc(500px / var(--grid-columns));
   height: calc(500px / var(--grid-columns));
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid gray;
   background-color: white;
-  border: black 1px solid;
 }
 
 /*TODO Modal Styling Area  */
 .modal-dark {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 4;
+  background-color: #333553;
+  opacity: 0;
+  transition: 0;
+  display: none;
+}
+
+.modal-dark.active {
+  opacity: 0.4;
+  display: block;
+}
+
+.modal-grid-selector {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  width: 250px;
+  background-color: white;
+  z-index: 6;
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -290%);
+  opacity: 0;
+  transition: 200ms all ease-out;
+}
+
+.modal-grid-selector.active {
+  transform: translate(-50%, -31%);
+  opacity: 1;
+}
+
+label[for="grid-number"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.hidden {
   display: none;
 }
 
@@ -236,6 +285,24 @@ a {
     display: none;
   }
 
+  .sketch-area {
+    width: var(--sketch-width-mobile);
+    height: var(--sketch-height-mobile);
+  }
+
+  .grid-item {
+    flex-basis: calc(200px / var(--grid-columns));
+    height: calc(200px / var(--grid-columns));
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .menu-desktop {
+    display: none;
+  }
+  .menu-button {
+    display: none;
+  }
   .sketch-area {
     width: var(--sketch-width-mobile);
     height: var(--sketch-height-mobile);

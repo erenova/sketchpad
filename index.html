@@ -17,26 +17,34 @@
         </div>
     </div>
     <div class="content">
-        <button class="menu-button active">
-            <div class="sign">↓</div>
-        </button>
-        <div class="sketch-area">
+
+        <div class="sketchpad">
+            <button class="menu-button active">
+                <div class="sign">↓</div>
+            </button>
+            <div class="menu-desktop active">
+                <button class="menu-grid-selector menu-item">16x16</button>
+                <div class="menu-color-palette menu-item"><input type="color" name="color-picker" id="color-picker">
+                </div>
+                <button class="menu-random-palette menu-item"><i class="fa-solid fa-palette fa-fade"></i></button>
+                <button class="menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
+                <button class="menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div class="sketch-area table">
+            </div>
         </div>
     </div>
 
-    <div class="menu-desktop active">
-        <button class="menu-grid-selector menu-item">16x16</button>
-        <div class="menu-color-palette menu-item"><input type="color" name="color-picker" id="color-picker"></div>
-        <button class="menu-random-palette menu-item"><i class="fa-solid fa-palette fa-fade"></i></button>
-        <button class="menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
-        <button class="menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
+
+    <div class="modal-dark ">
+
     </div>
-    <div class="modal-dark hidden">
-        <div class="modal-grid-selector hidden">
-            <label for="grid-number">
-                <input type="number" name="grid-number" id="grid-number">
-            </label>
-        </div>
+    <div class="modal-grid-selector ">
+        <label for="grid-number">
+            <p>number of grids (Max:50)</p>
+            <input type="number" name="grid-number" id="grid-number">
+            <button class="grid-number-button">Apply</button>
+        </label>
     </div>
     <div class="footer">
         <span id="footer-links">
