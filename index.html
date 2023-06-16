@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/c92ddab15c.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -16,18 +17,19 @@
         </div>
     </div>
     <div class="content">
-        <div class="menu-desktop">
-            <div class="menu-grid-selector menu-item"></div>
-            <div class="menu-color-palette menu-item"></div>
-            <div class="menu-random-palette menu-item"></div>
-            <div class="menu-eraser menu-item"></div>
-            <div class="menu-cleaner menu-item"></div>
-        </div>
+        <button class="menu-button active">
+            <div class="sign">↓</div>
+        </button>
         <div class="sketch-area">
-            <div class="grid-item"></div>
-
-
         </div>
+    </div>
+
+    <div class="menu-desktop active">
+        <button class="menu-grid-selector menu-item">16x16</button>
+        <div class="menu-color-palette menu-item"><input type="color" name="color-picker" id="color-picker"></div>
+        <button class="menu-random-palette menu-item"><i class="fa-solid fa-palette fa-fade"></i></button>
+        <button class="menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
+        <button class="menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
     </div>
     <div class="modal-dark hidden">
         <div class="modal-grid-selector hidden">

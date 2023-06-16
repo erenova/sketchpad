@@ -1,6 +1,6 @@
 /*? Technical Styling Area  */
 :root {
-  --grid-columns: 9;
+  --grid-columns: 16;
   --sketch-height-desktop: 500px;
   --sketch-width-desktop: 500px;
   --sketch-width-mobile: 200px;
@@ -38,6 +38,13 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background: rgb(214, 209, 209);
+  background: linear-gradient(
+    90deg,
+    rgba(214, 209, 209, 1) 0%,
+    rgba(193, 193, 203, 1) 35%,
+    rgba(181, 231, 241, 1) 100%
+  );
 }
 
 h2 {
@@ -63,19 +70,77 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+}
+
+.menu-button {
+  position: absolute;
+  top: 22%;
+  left: 37%;
+  transform: translate(-50%, -111%);
+  height: 30px;
+  width: 30px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: 300ms all ease;
+}
+
+.menu-button.active > div {
+  transition: 300ms all ease;
+
+  transform: scaleY(1);
+}
+.menu-button.deactive > .sign {
+  transition: 300ms all ease;
+
+  transform: scaleY(-1);
 }
 
 .menu-desktop {
-  opacity: 0;
-  transform: translateY(-335%);
+  border: black 1px solid;
+  padding: 10px;
+  border-radius: 20px 20px 0 0;
+  top: 27%;
+  left: 51%;
+  transform: translate(-50%, -52%);
   position: absolute;
-  border: 1px solid red;
   width: 400px;
   height: 50px;
+  transition: 300ms all cubic-bezier(0.075, 0.82, 0.165, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.menu-desktop.active {
+  border: none;
+  -webkit-box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
+  -moz-box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
+  box-shadow: 0px 0px 58px 20px rgba(45, 255, 196, 0.93);
+  opacity: 1;
+  transform: translate(-50.5%, -150%);
+}
+
+.menu-desktop > button {
+  height: 30px;
+}
+
+.fa-fade {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background: rgb(0, 255, 179);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 179, 1) 0%,
+    rgba(0, 0, 255, 1) 43%,
+    rgba(255, 0, 0, 1) 100%
+  );
 }
 
 .sketch-area {
+  background-color: white;
   border-radius: 3px;
   z-index: 1;
   border: 1px solid black;
