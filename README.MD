@@ -1,162 +1,30 @@
-# 👋 Hey there! 哈囉! <br>
+# SketchPad
 
-<div align="justify">
-I'm a very passinated, self-motivated Full Stack engineer who loves to work on web development. <br>
+Welcome to Etch-A-Sketch! This project brings the classic drawing toy to the web, allowing you to create beautiful artwork using your mouse or touch input. The project is built using HTML, CSS, and JavaScript, and provides an intuitive and interactive user interface.
 
-前端網頁開發 / 全端工程師 <br>
+## **Demo**
 
-I'm also passionate about exploring new technologies which I can leverage to solve real-life problems. <br>
+Check out the live demo of Etch-A-Sketch Web **[here](https://erenova.github.io/sketchpad)**.
 
-I'm bilingual and I speak both English and Chinese fluently. <br>
-[Pixiv Link](https://www.pixiv.net/en/users/94182718)
+## **Features**
 
-</div>
+- Create colorful drawings and sketches using your mouse or touch input.
+- Adjust the pen size to draw fine details or fill larger areas with colors.
+- Clear the drawing board with a single click to start fresh.
+- Enjoy a smooth and responsive drawing experience.
 
-# 🔧 Technologies & Tools 科技/工具
+## **Technologies Used**
 
-<table>
-  <tr>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-        width="48"
-        height="48"
-        alt="HTML"
-      />
-      <br /><strong>HTML5</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-        width="48"
-        height="48"
-        alt="CSS3"
-      />
-      <br /><strong>CSS3</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"
-        width="48"
-        height="48"
-        alt="JavaScript"
-      />
-      <br /><strong>JavaScript</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
-        width="48"
-        height="48"
-        alt="TypeScript"
-      />
-      <br /><strong>TypeScript</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-        width="48"
-        height="48"
-        alt="React"
-      />
-      <br /><strong>React</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
-        width="48"
-        height="48"
-        alt="Material UI"
-      />
-      <br /><strong>Material UI</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-        width="48"
-        height="48"
-        alt="Bootstrap"
-      />
-      <br /><strong>Bootstrap</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-        width="48"
-        height="48"
-        alt="Node.js"
-      />
-      <br /><strong>Node.js</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-        width="48"
-        height="48"
-        alt="Express"
-      />
-      <br /><strong>Express</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-        width="48"
-        height="48"
-        alt="MongoDB"
-      />
-      <br /><strong>MongoDB</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-        width="48"
-        height="48"
-        alt="Firebase"
-      />
-      <br /><strong>Firebase</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-        width="48"
-        height="48"
-        alt="Git"
-      />
-      <br /><strong>Git</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
-        width="48"
-        height="48"
-        alt="Npm"
-      />
-      <br /><strong>Npm</strong>
-    </td>
-    <td align="center" height="108" width="108">
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
-        width="48"
-        height="48"
-        alt="Jest"
-      />
-      <br /><strong>Jest</strong>
-    </td>
-  </tr>
-</table>
+The project utilizes the following technologies:
 
-# 📈 Stats
+- HTML: Used for creating the structure and content of the web application.
+- CSS: Used for styling the user interface and providing visual enhancements.
+- JavaScript: Used for implementing the drawing logic and interactivity.
 
-<img
-  src="https://github-readme-stats.vercel.app/api?username=aScHEABL&show_icons=true&theme=react&&hide_border=true"
-/>
-<img
-  src="https://github-readme-streak-stats.herokuapp.com/?user=aScHEABL&&theme=react&&hide_border=true"
-/>
+## **Acknowledgements**
 
-<!---
-aScHEABL/aScHEABL is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+- The concept and inspiration for Etch-A-Sketch Web are derived from the classic Etch-A-Sketch toy.
+- The project incorporates various online resources and tutorials to enhance the drawing experience.
+- Special thanks to **[The Odin Project](https://www.theodinproject.com/)** for providing this project as a task, allowing me to further develop my web development skills.
+
+Feel free to explore and modify the code to enhance the application or add additional features. Unleash your creativity and enjoy drawing with Etch-A-Sketch Web!
