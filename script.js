@@ -14,17 +14,38 @@ const menuDOM = {
   randomSelector: document.querySelector(".menu-random-palette"),
   eraserSelector: document.querySelector(".menu-eraser"),
   cleanerSelector: document.querySelector(".menu-cleaner"),
+  borderRemover: document.querySelector(".menu-border"),
+  paletteButton: document.querySelector(".menu-old-palette"),
+  palettePopup: document.querySelector(".palette-pop-up"),
+  paletteItem: document.querySelectorAll(".palette-item"),
   modalDark: document.querySelector(".modal-dark"),
   modalMenu: document.querySelector(".modal-grid-selector"),
   modalInput: document.querySelector("#grid-number"),
   modalButton: document.querySelector(".grid-number-button"),
 };
 
+const mobileDOM = {
+  mobileMenu: document.querySelector(".mobile-menu-self"),
+  mobileOpenMenu: document.querySelector(".mobile-menu-button"),
+  mobileCloseMenu: document.querySelector(".mobile-menu-close"),
+  mobileGridSelector: document.querySelector(".mobile-menu-grid-selector"),
+  mobileColorSelector: document.querySelector(".mobile-menu-color-palette"),
+  mobileColorPicker: document.querySelector("#mobile-color-picker"),
+  mobileRandomSelector: document.querySelector(".mobile-menu-random-palette"),
+  mobileEraserSelector: document.querySelector(".mobile-menu-eraser"),
+  mobileCleanerSelector: document.querySelector(".mobile-menu-cleaner"),
+  mobileBorderRemover: document.querySelector(".mobile-menu-border"),
+  mobilePaletteButton: document.querySelector(".mobile-menu-old-palette"),
+  mobilePalettePopup: document.querySelector(".mobile-palette-pop-up"),
+  mobilePaletteItem: document.querySelectorAll(".mobile-palette-item"),
+};
 // Sketch Settings - General
 const settings = {
   userColor: `#000000`,
+  userColorPast: ``,
+  userColorList: [`#ffffff`, `#ffffff`, `#ffffff`, `#ffffff`, `#ffffff`],
   userGrid: 16,
-  isMouseDown: false,
+  paletteIndex: 0,
   setUserGrid() {
     const root = document.documentElement;
     root.style.setProperty("--grid-columns", this.userGrid);
@@ -81,6 +102,9 @@ function createGrid() {
 /* Event Listener - General */
 
 /* Event Listener > painting Desktop */
+menuDOM.sketchArea.addEventListener("click", (e) => {
+  settings.changeColor(e);
+});
 
 menuDOM.sketchArea.addEventListener("mousedown", (e) => {
   e.preventDefault();
@@ -88,6 +112,9 @@ menuDOM.sketchArea.addEventListener("mousedown", (e) => {
 });
 
 menuDOM.sketchArea.addEventListener("mouseup", () => {
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.changeColor);
+});
+menuDOM.sketchArea.addEventListener("mouseleave", () => {
   menuDOM.sketchArea.removeEventListener("mouseover", settings.changeColor);
 });
 
@@ -103,6 +130,25 @@ menuDOM.gridSelector.addEventListener("click", () => {
   menuDOM.gridSelector.classList.add("active");
   menuDOM.modalDark.classList.add("active");
   menuDOM.modalMenu.classList.add("active");
+});
+
+// Menu Item > Color Picker
+menuDOM.colorSelector.addEventListener("click", () => {
+  menuDOM.colorSelector.addEventListener("change", (e) => {
+    menuDOM.sketchArea.removeEventListener(
+      "mouseover",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchstart",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchmove",
+      settings.setRandomColor
+    );
+    settings.userColor = e.target.value;
+  });
 });
 
 // Menu Item > Random Button
@@ -132,15 +178,121 @@ menuDOM.cleanerSelector.addEventListener("click", () => {
   menuDOM.sketchArea.removeEventListener("touchmove", settings.setRandomColor);
 });
 
+// Menu Item > Border Button
+
+menuDOM.borderRemover.addEventListener("click", () => {
+  const root = document.documentElement;
+  const borderColor = getComputedStyle(root).getPropertyValue("--border-color");
+  if (borderColor === "white") {
+    root.style.setProperty("--border-color", "gray");
+    root.style.setProperty("--border-px", "1px");
+  } else {
+    root.style.setProperty("--border-px", "0px");
+    root.style.setProperty("--border-color", "white");
+  }
+});
+
+// Menu Item > History Palette Button
+
+menuDOM.colorSelector.addEventListener("change", (e) => {
+  settings.userColor = e.target.value;
+  if (settings.paletteIndex < 5) {
+    settings.userColorList[settings.paletteIndex] = settings.userColor;
+    updateHistoryPalette();
+    settings.paletteIndex++;
+  } else {
+    settings.paletteIndex = 0;
+    settings.userColorList[settings.paletteIndex] = settings.userColor;
+    updateHistoryPalette();
+  }
+});
+
+function updateHistoryPalette() {
+  for (let i = 0; i < menuDOM.paletteItem.length; i++) {
+    menuDOM.paletteItem[
+      i
+    ].style.backgroundColor = `${settings.userColorList[i]}`;
+    menuDOM.paletteItem[i].setAttribute(
+      "data-color",
+      settings.userColorList[i]
+    );
+  }
+}
+
+menuDOM.paletteItem.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    const colorData = e.target.getAttribute("data-color");
+    settings.userColor = colorData;
+    menuDOM.colorPicker.value = settings.userColor;
+  });
+});
+
+updateHistoryPalette();
+
+menuDOM.paletteButton.addEventListener("click", () => {
+  menuDOM.palettePopup.classList.toggle("active");
+});
 /* Event Listener > menu */
 menuDOM.menuButton.addEventListener("click", () => {
   menuDOM.menuDesktop.classList.toggle("active");
   menuDOM.menuButton.classList.toggle("active");
   menuDOM.menuButton.classList.toggle("deactive");
+  if (menuDOM.palettePopup.classList.contains("active")) {
+    menuDOM.palettePopup.classList.remove("active");
+  } else {
+    menuDOM.palettePopup.classLists.add("active");
+  }
 });
 
-menuDOM.colorSelector.addEventListener("click", () => {
-  menuDOM.colorSelector.addEventListener("change", (e) => {
+/* Event Listener > modal */
+
+document.addEventListener("click", (e) => {
+  if (e.target === menuDOM.modalDark) {
+    menuDOM.modalDark.classList.remove("active");
+    menuDOM.modalMenu.classList.remove("active");
+    menuDOM.gridSelector.classList.remove("active");
+    mobileDOM.mobileMenu.classList.remove("active");
+  }
+});
+
+/* Event Listener > Modal Menu */
+
+menuDOM.modalInput.addEventListener("change", (e) => {
+  if (e.target.value > 100 || e.target.value <= 0) {
+    e.target.value = 1;
+    settings.userGrid = e.target.value;
+    return;
+  }
+  settings.userGrid = e.target.value;
+});
+
+menuDOM.modalButton.addEventListener("click", () => {
+  createGrid();
+  menuDOM.modalDark.classList.remove("active");
+  menuDOM.modalMenu.classList.remove("active");
+  menuDOM.gridSelector.classList.remove("active");
+  mobileDOM.mobileMenu.classList.remove("active");
+});
+
+/* Mobile Section */
+mobileDOM.mobileCloseMenu.addEventListener("click", () => {
+  mobileDOM.mobileMenu.classList.toggle("active");
+  menuDOM.modalDark.classList.toggle("active");
+});
+
+mobileDOM.mobileOpenMenu.addEventListener("click", () => {
+  mobileDOM.mobileMenu.classList.toggle("active");
+  menuDOM.modalDark.classList.toggle("active");
+});
+
+mobileDOM.mobileGridSelector.addEventListener("click", () => {
+  menuDOM.modalDark.classList.add("active");
+  menuDOM.modalMenu.classList.add("active");
+  mobileDOM.mobileMenu.classList.remove("active");
+});
+
+mobileDOM.mobileColorSelector.addEventListener("click", () => {
+  mobileDOM.mobileColorSelector.addEventListener("change", (e) => {
     menuDOM.sketchArea.removeEventListener(
       "mouseover",
       settings.setRandomColor
@@ -157,30 +309,71 @@ menuDOM.colorSelector.addEventListener("click", () => {
   });
 });
 
-/* Event Listener > modal */
-
-document.addEventListener("click", (e) => {
-  if (e.target === menuDOM.modalDark) {
-    menuDOM.modalDark.classList.remove("active");
-    menuDOM.modalMenu.classList.remove("active");
-    menuDOM.gridSelector.classList.remove("active");
-  }
+mobileDOM.mobileRandomSelector.addEventListener("click", () => {
+  mobileDOM.mobileColorPicker.value = settings.generateRandomHexCode();
+  menuDOM.sketchArea.addEventListener("mouseover", settings.setRandomColor);
+  menuDOM.sketchArea.addEventListener("touchstart", settings.setRandomColor);
+  menuDOM.sketchArea.addEventListener("touchmove", settings.setRandomColor);
 });
 
-/* Event Listener > Modal Menu */
-
-menuDOM.modalInput.addEventListener("change", (e) => {
-  if (e.target.value > 50 || e.target.value <= 0) {
-    e.target.value = 1;
-    settings.userGrid = e.target.value;
-    return;
-  }
-  settings.userGrid = e.target.value;
+mobileDOM.mobileEraserSelector.addEventListener("click", () => {
+  settings.userColor = `#ffffff`;
+  mobileDOM.mobileColorPicker.value = `#ffffff`;
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.setRandomColor);
+  menuDOM.sketchArea.removeEventListener("touchstart", settings.setRandomColor);
+  menuDOM.sketchArea.removeEventListener("touchmove", settings.setRandomColor);
 });
 
-menuDOM.modalButton.addEventListener("click", () => {
+mobileDOM.mobileCleanerSelector.addEventListener("click", () => {
   createGrid();
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.setRandomColor);
+  menuDOM.sketchArea.removeEventListener("touchstart", settings.setRandomColor);
+  menuDOM.sketchArea.removeEventListener("touchmove", settings.setRandomColor);
+  mobileDOM.mobileMenu.classList.remove("active");
   menuDOM.modalDark.classList.remove("active");
-  menuDOM.modalMenu.classList.remove("active");
-  menuDOM.gridSelector.classList.remove("active");
+});
+
+mobileDOM.mobileBorderRemover.addEventListener("click", () => {
+  const root = document.documentElement;
+  const borderColor = getComputedStyle(root).getPropertyValue("--border-color");
+  if (borderColor === "white") {
+    root.style.setProperty("--border-color", "gray");
+    root.style.setProperty("--border-px", "1px");
+  } else {
+    root.style.setProperty("--border-px", "0px");
+    root.style.setProperty("--border-color", "white");
+  }
+});
+
+mobileDOM.mobileColorSelector.addEventListener("change", (e) => {
+  settings.userColor = e.target.value;
+  if (settings.paletteIndex < 5) {
+    settings.userColorList[settings.paletteIndex] = settings.userColor;
+    mobileUpdateHistoryPalette();
+    settings.paletteIndex++;
+  } else {
+    settings.paletteIndex = 0;
+    settings.userColorList[settings.paletteIndex] = settings.userColor;
+    mobileUpdateHistoryPalette();
+  }
+});
+
+function mobileUpdateHistoryPalette() {
+  for (let i = 0; i < mobileDOM.mobilePaletteItem.length; i++) {
+    mobileDOM.mobilePaletteItem[
+      i
+    ].style.backgroundColor = `${settings.userColorList[i]}`;
+    mobileDOM.mobilePaletteItem[i].setAttribute(
+      "data-color",
+      settings.userColorList[i]
+    );
+  }
+}
+
+mobileDOM.mobilePaletteItem.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    const colorData = e.target.getAttribute("data-color");
+    settings.userColor = colorData;
+    mobileDOM.mobileColorPicker.value = settings.userColor;
+  });
 });

@@ -20,7 +20,7 @@
 
         <div class="sketchpad">
             <button class="menu-button active">
-                <div class="sign">↓</div>
+                <div class="sign"><i class="fa-solid fa-arrow-down"></i></div>
             </button>
             <div class="menu-desktop active">
                 <button class="menu-grid-selector menu-item">16x16</button>
@@ -29,19 +29,51 @@
                 <button class="menu-random-palette menu-item"><i class="fa-solid fa-palette fa-fade"></i></button>
                 <button class="menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
                 <button class="menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
+                <button class="menu-border menu-item">border on/off</button>
+                <button class="menu-old-palette menu-item">Color Palette</button>
+                <div class="palette-pop-up active">
+                    <div class="palette-item item-1"></div>
+                    <div class="palette-item item-2"></div>
+                    <div class="palette-item item-3"></div>
+                    <div class="palette-item item-4"></div>
+                    <div class="palette-item item-5"></div>
+                </div>
             </div>
-            <div class="sketch-area table">
+            <div class="sketch-area">
             </div>
         </div>
     </div>
+    <div class="mobile-menu-self">
+        <div class="mobile-menu-close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="mobile-menu-title">sketch Menu</div>
+        <div class="mobile-menu-list">
+            <!-- Repetition -->
+            <button class="mobile-menu-grid-selector menu-item">
+                16x16</button>
+            <div class="mobile-menu-color-palette menu-item">
+                <input type="color" name="color-picker" id="mobile-color-picker">
+            </div>
+            <button class="mobile-menu-random-palette menu-item"><i class="fa-solid fa-palette fa-fade"></i></button>
+            <button class="mobile-menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
+            <button class="mobile-menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
+            <button class="mobile-menu-border menu-item">border on/off</button>
 
-
-    <div class="modal-dark ">
-
+            <div class="mobile-palette-pop-up active">
+                <div class="mobile-palette-item item-1"></div>
+                <div class="mobile-palette-item item-2"></div>
+                <div class="mobile-palette-item item-3"></div>
+                <div class="mobile-palette-item item-4"></div>
+                <div class="mobile-palette-item item-5"></div>
+            </div>
+            <!-- rep-end -->
+        </div>
     </div>
-    <div class="modal-grid-selector ">
+    <div class="mobile-menu-button"><i class="fa-solid fa-bars"></i></div>
+
+    <div class="modal-dark"></div>
+    <div class="modal-grid-selector">
         <label for="grid-number">
-            <p>number of grids (Max:50)</p>
+            <p>number of grids (Max:100)</p>
             <input type="number" name="grid-number" id="grid-number">
             <button class="grid-number-button">Apply</button>
         </label>
