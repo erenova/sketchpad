@@ -8,22 +8,6 @@
 }
 
 @font-face {
-  font-family: "groovenregular";
-  src: url("assets/grooven-webfont.woff2") format("woff2"),
-    url("assets/grooven-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "groovenoutline";
-  src: url("assets/grooven-outline-webfont.woff2") format("woff2"),
-    url("assets/grooven-outline-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "groovenshine";
   src: url("assets/grooven-shine-webfont.woff2") format("woff2"),
     url("assets/grooven-shine-webfont.woff") format("woff");
