@@ -245,6 +245,8 @@ menuDOM.menuButton.addEventListener("click", () => {
 });
 
 /* Event Listener > modal */
+mobileDOM.mobileMenu.classList.toggle("active");
+menuDOM.modalDark.classList.toggle("active");
 
 document.addEventListener("click", (e) => {
   if (e.target === menuDOM.modalDark) {
