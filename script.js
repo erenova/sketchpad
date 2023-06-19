@@ -377,8 +377,3 @@ mobileDOM.mobilePaletteItem.forEach((item) => {
     mobileDOM.mobileColorPicker.value = settings.userColor;
   });
 });
-
-if (window.outerWidth < 768) {
-  mobileDOM.mobileMenu.classList.toggle("active");
-  menuDOM.modalDark.classList.toggle("active");
-}
