@@ -245,8 +245,6 @@ menuDOM.menuButton.addEventListener("click", () => {
 });
 
 /* Event Listener > modal */
-mobileDOM.mobileMenu.classList.toggle("active");
-menuDOM.modalDark.classList.toggle("active");
 
 document.addEventListener("click", (e) => {
   if (e.target === menuDOM.modalDark) {
@@ -379,3 +377,8 @@ mobileDOM.mobilePaletteItem.forEach((item) => {
     mobileDOM.mobileColorPicker.value = settings.userColor;
   });
 });
+
+if (window.outerWidth < 768) {
+  mobileDOM.mobileMenu.classList.toggle("active");
+  menuDOM.modalDark.classList.toggle("active");
+}
