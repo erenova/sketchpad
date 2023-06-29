@@ -377,3 +377,15 @@ mobileDOM.mobilePaletteItem.forEach((item) => {
     mobileDOM.mobileColorPicker.value = settings.userColor;
   });
 });
+
+/* Fantasy Features  */
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+menuDOM.sketchArea.addEventListener("contextmenu", (e) => {
+  if (e.target.classList.contains("grid-item")) {
+    e.target.style.backgroundColor = `#ffffff`;
+  }
+});
