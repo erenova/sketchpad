@@ -56,6 +56,12 @@ const settings = {
       menuDOM.colorPicker.value = settings.userColor;
     }
   },
+  rightCleaner(e) {
+    if (e.target !== menuDOM.sketchArea) {
+      e.target.style.backgroundColor = `#ffffff`;
+      menuDOM.colorPicker.value = settings.userColor;
+    }
+  },
   generateRandomHexCode() {
     let randomNum = Math.floor(Math.random() * 16777215);
     let hexCode = "#" + randomNum.toString(16).toUpperCase();
@@ -113,9 +119,11 @@ menuDOM.sketchArea.addEventListener("mousedown", (e) => {
 
 menuDOM.sketchArea.addEventListener("mouseup", () => {
   menuDOM.sketchArea.removeEventListener("mouseover", settings.changeColor);
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.rightCleaner);
 });
 menuDOM.sketchArea.addEventListener("mouseleave", () => {
   menuDOM.sketchArea.removeEventListener("mouseover", settings.changeColor);
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.rightCleaner);
 });
 
 /* Event Listener > Painting Mobile */
@@ -388,4 +396,8 @@ menuDOM.sketchArea.addEventListener("contextmenu", (e) => {
   if (e.target.classList.contains("grid-item")) {
     e.target.style.backgroundColor = `#ffffff`;
   }
+  menuDOM.sketchArea.removeEventListener("mouseover", settings.changeColor);
+  menuDOM.sketchArea.addEventListener("mouseover", settings.rightCleaner);
 });
+
+/* Fantasy Feature (Screenshot of sketchpad) */
