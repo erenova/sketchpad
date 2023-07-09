@@ -401,3 +401,19 @@ menuDOM.sketchArea.addEventListener("contextmenu", (e) => {
 });
 
 /* Fantasy Feature (Screenshot of sketchpad) */
+
+function captureScreenshot() {
+  let sketchArea = document.querySelector(".sketch-area");
+
+  html2canvas(sketchArea).then(function (canvas) {
+    let imgData = canvas.toDataURL();
+
+    // Create an 'a' element to download the image
+    let downloadLink = document.createElement("a");
+    downloadLink.href = imgData;
+    downloadLink.download = "screenshot.png";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  });
+}
