@@ -411,7 +411,7 @@ function captureScreenshot() {
     // Create an 'a' element to download the image
     let downloadLink = document.createElement("a");
     downloadLink.href = imgData;
-    downloadLink.download = "screenshot.png";
+    downloadLink.download = `src-${Date.now().toString().slice(5)}.png`;
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
