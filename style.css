@@ -311,8 +311,13 @@ a {
   }
 }
 
-.work-saver-button {
+.sketchpad {
+  position: relative;
+}
+
+.work-saver-button-pc {
   position: absolute;
+  transform: translate(-110%, 550%);
 }
 
 /* Responsive section/Media Query section */
@@ -332,6 +337,9 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+  .work-saver-button-pc {
+    display: none;
+  }
   .mobile-menu-self {
     z-index: 5;
     display: flex;

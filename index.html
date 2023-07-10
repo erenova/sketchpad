@@ -21,10 +21,14 @@
     <div class="content">
 
         <div class="sketchpad">
+            <div class="work-saver-button-pc">
+                <button onclick="captureScreenshot()">Take Screenshot</button>
+            </div>
             <button class="menu-button active">
                 <div class="sign"><i class="fa-solid fa-arrow-down"></i></div>
             </button>
             <div class="menu-desktop active">
+
                 <button class="menu-grid-selector menu-item">16x16</button>
                 <div class="menu-color-palette menu-item"><input type="color" name="color-picker" id="color-picker">
                 </div>
@@ -46,9 +50,7 @@
         </div>
     </div>
 
-    <div class="work-saver-button">
-        <button onclick="captureScreenshot()">Take Screenshot</button>
-    </div>
+
     <div class="mobile-menu-self">
         <div class="mobile-menu-close"><i class="fa-solid fa-xmark"></i></div>
         <div class="mobile-menu-title">sketch Menu</div>
@@ -63,6 +65,8 @@
             <button class="mobile-menu-eraser menu-item"><i class="fa-solid fa-eraser"></i></button>
             <button class="mobile-menu-cleaner menu-item"><i class="fa-solid fa-trash"></i></button>
             <button class="mobile-menu-border menu-item">border on/off</button>
+
+            <button class="mobile-menu-worksaver menu-item" onclick="captureScreenshot()">Take Screenshot</button>
             <div class="mobile-palette-pop-up active">
                 <div class="mobile-palette-item item-1"></div>
                 <div class="mobile-palette-item item-2"></div>
