@@ -94,6 +94,7 @@ function createGrid() {
   }
   settings.setUserGrid();
   menuDOM.gridSelector.textContent = `${settings.userGrid}x${settings.userGrid}`;
+  mobileDOM.mobileGridSelector.textContent = `${settings.userGrid}x${settings.userGrid}`;
 
   for (let i = 0; i < userGrid * userGrid; i++) {
     let gridItem = document.createElement("div");
