@@ -233,6 +233,18 @@ menuDOM.paletteItem.forEach((item) => {
     const colorData = e.target.getAttribute("data-color");
     settings.userColor = colorData;
     menuDOM.colorPicker.value = settings.userColor;
+    menuDOM.sketchArea.removeEventListener(
+      "mouseover",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchstart",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchmove",
+      settings.setRandomColor
+    );
   });
 });
 
@@ -384,6 +396,18 @@ mobileDOM.mobilePaletteItem.forEach((item) => {
     const colorData = e.target.getAttribute("data-color");
     settings.userColor = colorData;
     mobileDOM.mobileColorPicker.value = settings.userColor;
+    menuDOM.sketchArea.removeEventListener(
+      "mouseover",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchstart",
+      settings.setRandomColor
+    );
+    menuDOM.sketchArea.removeEventListener(
+      "touchmove",
+      settings.setRandomColor
+    );
   });
 });
 
