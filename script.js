@@ -352,8 +352,6 @@ mobileDOM.mobileCleanerSelector.addEventListener("click", () => {
   menuDOM.sketchArea.removeEventListener("mouseover", settings.setRandomColor);
   menuDOM.sketchArea.removeEventListener("touchstart", settings.setRandomColor);
   menuDOM.sketchArea.removeEventListener("touchmove", settings.setRandomColor);
-  mobileDOM.mobileMenu.classList.remove("active");
-  menuDOM.modalDark.classList.remove("active");
 });
 
 mobileDOM.mobileBorderRemover.addEventListener("click", () => {
@@ -447,6 +445,12 @@ function captureScreenshot() {
 
 /* FF-2 (Fill Button to fill up every block) */
 menuDOM.fillSelector.addEventListener("click", () => {
+  menuDOM.gridItems.forEach((item) => {
+    item.style.backgroundColor = settings.userColor;
+  });
+});
+
+mobileDOM.mobileFillSelector.addEventListener("click", () => {
   menuDOM.gridItems.forEach((item) => {
     item.style.backgroundColor = settings.userColor;
   });
