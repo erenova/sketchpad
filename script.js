@@ -14,6 +14,7 @@ const menuDOM = {
   randomSelector: document.querySelector(".menu-random-palette"),
   eraserSelector: document.querySelector(".menu-eraser"),
   cleanerSelector: document.querySelector(".menu-cleaner"),
+  fillSelector: document.querySelector(".menu-fill"),
   borderRemover: document.querySelector(".menu-border"),
   paletteButton: document.querySelector(".menu-old-palette"),
   palettePopup: document.querySelector(".palette-pop-up"),
@@ -34,6 +35,7 @@ const mobileDOM = {
   mobileRandomSelector: document.querySelector(".mobile-menu-random-palette"),
   mobileEraserSelector: document.querySelector(".mobile-menu-eraser"),
   mobileCleanerSelector: document.querySelector(".mobile-menu-cleaner"),
+  mobileFillSelector: document.querySelector(".mobile-menu-fill"),
   mobileBorderRemover: document.querySelector(".mobile-menu-border"),
   mobilePaletteButton: document.querySelector(".mobile-menu-old-palette"),
   mobilePalettePopup: document.querySelector(".mobile-palette-pop-up"),
@@ -442,3 +444,10 @@ function captureScreenshot() {
     document.body.removeChild(downloadLink);
   });
 }
+
+/* FF-2 (Fill Button to fill up every block) */
+menuDOM.fillSelector.addEventListener("click", () => {
+  menuDOM.gridItems.forEach((item) => {
+    item.style.backgroundColor = settings.userColor;
+  });
+});
